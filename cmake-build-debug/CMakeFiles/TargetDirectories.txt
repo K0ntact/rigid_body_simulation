@@ -1,3 +1,0 @@
-C:/Users/DUYAN/Documents/GitHub/rigid_body_simulationVS/cmake-build-debug/CMakeFiles/rigid_body_simulationVS.dir
-C:/Users/DUYAN/Documents/GitHub/rigid_body_simulationVS/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/DUYAN/Documents/GitHub/rigid_body_simulationVS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
