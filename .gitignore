@@ -479,3 +479,5 @@ fabric.properties
 /.idea/
 cmake-build-debug/*
 !cmake-build-debug/SDL2.dll
+
+SDL2-2.26.5/
