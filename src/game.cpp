@@ -30,3 +30,32 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     return true;
 }
 
+void Game::render() {
+    SDL_RenderClear(m_pRenderer);
+    SDL_RenderPresent(m_pRenderer);
+}
+
+void Game::update() {}
+
+void Game::handleEvents() {
+    SDL_Event event;
+    if(SDL_PollEvent(&event)) {
+        switch(event.type) {
+            case SDL_QUIT:
+                m_bRunning = false;
+                break;
+
+                // TODO: implement more events
+
+            default:
+                break;  // TODO: implement default case
+        }
+    }
+}
+
+void Game::clean() {
+    std::cout << "cleaning game\n";
+    SDL_DestroyWindow(m_pWindow);
+    SDL_DestroyRenderer(m_pRenderer);
+    SDL_Quit();
+}
