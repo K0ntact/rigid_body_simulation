@@ -13,7 +13,7 @@ public:
     Game();
     ~Game(); // Destructor
 
-    bool init(const char* title, int xpos, int ypos, int width, int height, int flags);
+    bool init(const char* title, int xpos, int ypos, int width, int height, int fullscreen);
     void render();
     void update();
     void handleEvents();

@@ -1,12 +1,34 @@
 #include <iostream>
 #include "header/game.h"
 
-bool Game::init(const char *title, int xpos, int ypos, int width, int height, int flags) {
+Game::Game() {
+    m_bRunning = false;
+    m_pWindow = nullptr;
+    m_pRenderer = nullptr;
+}
+
+Game::~Game() {
+    if (m_pRenderer) {
+        SDL_DestroyRenderer(m_pRenderer);
+        m_pRenderer = nullptr;
+    }
+    if (m_pWindow) {
+        SDL_DestroyWindow(m_pWindow);
+        m_pWindow = nullptr;
+    }
+}
+
+bool Game::init(const char *title, int xpos, int ypos, int width, int height, int fullscreen) {
     // SDL init
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         const char* error = SDL_GetError();
         std::cout<< "SDL Init fail: " << error << "\n";
         return false;
+    }
+
+    int flags = 0;
+    if(fullscreen) {
+        flags = SDL_WINDOW_FULLSCREEN;
     }
 
     // Window init
