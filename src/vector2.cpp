@@ -71,4 +71,5 @@ float Vector2::calAngle(const Vector2& vector) const {
     float dotProduct = this->scalarProduct(vector);
     float len_a = this->magnitude();
     float len_b = vector.magnitude();
-    return (float)std::acos(dotProduct / (len_a * len_b));
+    return (float) std::acos(dotProduct / (len_a * len_b));
+}
