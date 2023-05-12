@@ -8,6 +8,9 @@ private:
     bool m_bRunning;
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
+    SDL_Texture* m_pTexture;
+    SDL_Rect m_sourceRectangle;
+    SDL_Rect m_destinationRectangle;
 
 public:
     Game();
