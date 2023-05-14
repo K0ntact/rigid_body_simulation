@@ -1,5 +1,6 @@
 #include <iostream>
 #include "header/game.h"
+#include "header/game.hpp"
 
 Game::Game() {
     m_bRunning = false;
