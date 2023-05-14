@@ -1,4 +1,4 @@
-#include "header//vector3.hpp"
+#include "vector3.hpp"
 #include <assert.h>
 
 Vector3::Vector3(float x, float y, float z) {
@@ -14,7 +14,7 @@ Vector3::Vector3() {
 }
 
 float Vector3::magnitude() const {
-    return std::sqrt(x * x + y * y + z * z));
+    return std::sqrt(x * x + y * y + z * z);
 }
 
 float Vector3::squaredMagnitude() const {

@@ -1,4 +1,4 @@
-#include "header/particle3d.hpp"
+#include "particle3d.hpp"
 
 Particle3D::Particle3D() {
     this->position = {0, 0, 0};

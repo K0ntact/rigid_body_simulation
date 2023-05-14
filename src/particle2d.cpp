@@ -1,4 +1,4 @@
-#include "header//particle2d.hpp"
+#include "particle2d.hpp"
 
 Particle2D::Particle2D() {
     this->position = {0, 0};
