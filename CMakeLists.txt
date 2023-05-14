@@ -9,5 +9,5 @@ set(SDL2_PATH "SDL2-2.26.5\\x86_64-w64-mingw32")
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 
-add_executable(rigid_body_simulation main.cpp src src/header/game.h src/game.cpp)
+add_executable(rigid_body_simulation main.cpp src src/header/game.hpp src/game.cpp src/particle2d.cpp src/vector2.cpp src/vector3.cpp src/particle3d.cpp)
 target_link_libraries(rigid_body_simulation ${SDL2_LIBRARY})
