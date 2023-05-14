@@ -1,5 +1,5 @@
-#ifndef GAME_H_
-#define GAME_H_
+#ifndef GAME_HPP
+#define GAME_HPP
 
 #include "SDL.h"
 
@@ -27,4 +27,4 @@ public:
     }
 };
 
-#endif //GAME_H_
+#endif //GAME_HPP

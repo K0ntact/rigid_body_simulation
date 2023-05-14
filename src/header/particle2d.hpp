@@ -1,3 +1,6 @@
+#ifndef PARTICLE2D_HPP
+#define PARTICLE2D_HPP
+
 #include "vector2.hpp"
 
 class Particle2D {
@@ -20,3 +23,4 @@ public:
     void update(float time);
 };
 
+#endif //PARTICLE2D_HPP

@@ -1,3 +1,6 @@
+#ifndef PARTICLE3D_HPP
+#define PARTICLE3D_HPP
+
 #include "vector3.hpp"
 #include "assert.h"
 
@@ -22,3 +25,5 @@ public:
     void setDamping(float damp);
     void update(float time);
 };
+
+#endif //PARTICLE3D_HPP

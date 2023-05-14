@@ -1,3 +1,6 @@
+#ifndef VECTOR2_HPP
+#define VECTOR2_HPP
+
 #include <cmath>
 #include "assert.h"
 
@@ -29,3 +32,5 @@ public:
 
     float calAngle(const Vector2& vector) const;
 };
+
+#endif //VECTOR2_HPP

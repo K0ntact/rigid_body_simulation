@@ -1,3 +1,6 @@
+#ifndef VECTOR3_HPP
+#define VECTOR3_HPP
+
 #include <cmath>
 
 class Vector3 {
@@ -30,3 +33,5 @@ public:
 
     float calAngle(const Vector3& vector) const;
 };
+
+#endif //VECTOR3_HPP
