@@ -6,6 +6,8 @@ Game::Game() {
     m_pWindow = nullptr;
     m_pRenderer = nullptr;
     m_pTexture = nullptr;
+    m_sourceRectangle = SDL_Rect{0, 0, 0, 0};
+    m_destinationRectangle = SDL_Rect{0, 0, 0, 0};
 }
 
 Game::~Game() {
@@ -51,9 +53,15 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
     m_bRunning = true;
 
-    SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+    SDL_Surface* pTempSurface = SDL_LoadBMP("..\\assets\\fishtitle.bmp");
+    if (pTempSurface == nullptr) {
+        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+    }
 
     m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+    if (m_pTexture == nullptr) {
+        std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
+    }
 
     SDL_FreeSurface(pTempSurface);
 
@@ -72,8 +80,8 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
 }
 
 void Game::render() {
-    SDL_RenderClear(m_pRenderer);
     SDL_RenderPresent(m_pRenderer);
+//    SDL_RenderClear(m_pRenderer);
 }
 
 void Game::update() {}
@@ -95,7 +103,7 @@ void Game::handleEvents() {
 }
 
 void Game::clean() {
-    std::cout << "cleaning game\n";
+    std::cout << "cleaning game" << std::endl;
     SDL_DestroyWindow(m_pWindow);
     SDL_DestroyRenderer(m_pRenderer);
     SDL_Quit();
