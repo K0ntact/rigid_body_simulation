@@ -8,6 +8,7 @@ Game::Game() {
     m_pTexture = nullptr;
     m_sourceRectangle = SDL_Rect{0, 0, 0, 0};
     m_destinationRectangle = SDL_Rect{0, 0, 0, 0};
+    m_currentFrame = 0;
 }
 
 Game::~Game() {
@@ -53,29 +54,13 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
     m_bRunning = true;
 
-    SDL_Surface* pTempSurface = SDL_LoadBMP("..\\assets\\fishtitle.bmp");
-    if (pTempSurface == nullptr) {
-        std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
+    bool load_result = TextureManager::Instance()->load("..\\assets\\platform\\arc2.png", "animate", m_pRenderer);
+    if(!load_result) {
+        std::cout << "TextureManager Instance error" << std::endl;
+        return false;
     }
 
-    m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-    if (m_pTexture == nullptr) {
-        std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
-    }
-
-    SDL_FreeSurface(pTempSurface);
-
-    SDL_QueryTexture(m_pTexture, NULL, NULL,
-                    &m_sourceRectangle.w,
-                    &m_sourceRectangle.h);
-
-    m_destinationRectangle.x = m_sourceRectangle.x = 0;
-    m_destinationRectangle.y = m_sourceRectangle.y = 0;
-    m_destinationRectangle.w = m_sourceRectangle.w;
-    m_destinationRectangle.h = m_sourceRectangle.h;
-
-    SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-
+    TextureManager::Instance()->draw("animate", 0, 0, 34, 42, m_pRenderer);
     return true;
 }
 

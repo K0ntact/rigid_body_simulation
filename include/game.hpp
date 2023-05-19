@@ -3,6 +3,8 @@
 
 #include "SDL.h"
 
+#include "TextureManager.hpp"
+
 class Game {
 private:
     bool m_bRunning;
@@ -11,6 +13,7 @@ private:
     SDL_Texture* m_pTexture;
     SDL_Rect m_sourceRectangle{};
     SDL_Rect m_destinationRectangle{};
+    int m_currentFrame;
 
 public:
     Game();
