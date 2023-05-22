@@ -21,5 +21,7 @@ add_executable(rigid_body_simulation main.cpp
                 src/vector3.cpp
                 src/particle3d.cpp
                 include/TextureManager.hpp
-                src/TextureManager.cpp)
+                src/TextureManager.cpp
+                src/gameObject.cpp
+                include/gameObject.hpp)
 target_link_libraries(rigid_body_simulation ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES})
