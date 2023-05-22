@@ -9,14 +9,23 @@
 
 class Game {
 private:
+    static Game* s_pInstance;
+    Game();
+
     bool m_bRunning;
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
     std::vector<GameObject*> go_arr;
 
 public:
-    Game();
-    ~Game(); // Destructor
+    static Game* Instance() {
+        if(s_pInstance == nullptr) {
+            s_pInstance = new Game();
+            return s_pInstance;
+        }
+        return s_pInstance;
+    }
+    ~Game();
 
     bool init(const char* title, int xpos, int ypos, int width, int height, int fullscreen);
     void render();

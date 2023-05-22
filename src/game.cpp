@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "game.hpp"
 #include "gameObject.hpp"
 
@@ -18,6 +19,8 @@ Game::~Game() {
         m_pWindow = nullptr;
     }
 }
+
+Game* Game::s_pInstance = nullptr;
 
 bool Game::init(const char *title, int xpos, int ypos, int width, int height, int fullscreen) {
     // SDL init
@@ -60,6 +63,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     GameObject* gobj1 = new GameObject();
     gobj1->load(0, 0, 34, 42, "animate");
     go_arr.push_back(gobj1);
+
     return true;
 }
 

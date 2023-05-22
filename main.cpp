@@ -12,15 +12,16 @@ int main(int argc, char* argv[]) {
     AllocConsole();
     freopen("CON", "w", stdout);
 
-    g_game = new Game();
-    g_game->init("Chapter 1", 100, 100, 640, 480, true);
 
-    while(g_game->running()) {
-        g_game->handleEvents();
-        g_game->update();
-        g_game->render();
+    Game::Instance()->init("Chapter 1", 100, 100, 640, 480, true);
+
+    while(Game::Instance()->running()) {
+        Game::Instance()->handleEvents();
+        Game::Instance()->update();
+        Game::Instance()->render();
+        SDL_Delay(10);
     }
-    g_game->clean();
+    Game::Instance()->clean();
 
     return 0;
 }
