@@ -1,14 +1,11 @@
 #include <iostream>
 #include "game.hpp"
+#include "gameObject.hpp"
 
 Game::Game() {
     m_bRunning = false;
     m_pWindow = nullptr;
     m_pRenderer = nullptr;
-    m_pTexture = nullptr;
-    m_sourceRectangle = SDL_Rect{0, 0, 0, 0};
-    m_destinationRectangle = SDL_Rect{0, 0, 0, 0};
-    m_currentFrame = 0;
 }
 
 Game::~Game() {
@@ -60,16 +57,29 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
         return false;
     }
 
-    TextureManager::Instance()->draw("animate", 0, 0, 34, 42, m_pRenderer);
+    GameObject* gobj1 = new GameObject();
+    gobj1->load(0, 0, 34, 42, "animate");
+    go_arr.push_back(gobj1);
     return true;
 }
 
 void Game::render() {
+    SDL_RenderClear(m_pRenderer);
+
+    std::vector<GameObject*>::iterator go_iter;
+    for(go_iter = go_arr.begin(); go_iter != go_arr.end(); ++go_iter) {
+        (*go_iter)->draw(m_pRenderer);
+    }
+
     SDL_RenderPresent(m_pRenderer);
-//    SDL_RenderClear(m_pRenderer);
 }
 
-void Game::update() {}
+void Game::update() {
+    std::vector<GameObject*>::iterator go_iter;
+    for(go_iter = go_arr.begin(); go_iter != go_arr.end(); ++go_iter) {
+        (*go_iter)->update();
+    }
+}
 
 void Game::handleEvents() {
     SDL_Event event;

@@ -1,19 +1,18 @@
 #ifndef GAME_HPP
 #define GAME_HPP
+#include <vector>
 
 #include "SDL.h"
 
 #include "TextureManager.hpp"
+#include "gameObject.hpp"
 
 class Game {
 private:
     bool m_bRunning;
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
-    SDL_Texture* m_pTexture;
-    SDL_Rect m_sourceRectangle{};
-    SDL_Rect m_destinationRectangle{};
-    int m_currentFrame;
+    std::vector<GameObject*> go_arr;
 
 public:
     Game();
