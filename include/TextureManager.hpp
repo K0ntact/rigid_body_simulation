@@ -22,7 +22,7 @@ public:
     }
     ~TextureManager();
 
-    std::map<std::string, SDL_Texture*> m_textureMap;
+    std::map<std::string, SDL_Texture*> m_textureMap;   // map the texture to string for easy access
 
     bool load(const std::string& fileName,
               const std::string& id,

@@ -19,17 +19,17 @@ bool TextureManager::load(const std::string& fileName,
     }
 
     SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
-    SDL_FreeSurface(pTempSurface);
+    SDL_FreeSurface(pTempSurface);  // we only need the texture, not the surface
     if(pTexture == nullptr) {
         std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
         return false;
     }
 
-    // add the texture to map
     m_textureMap[id] = pTexture;
     return true;
 }
 
+// For drawing single image
 void TextureManager::draw(const std::string& id,
                           int x, int y, int width, int height,
                           SDL_Renderer *pRenderer,
@@ -44,14 +44,15 @@ void TextureManager::draw(const std::string& id,
     destRect.x = x;
     destRect.y = y;
 
-    //
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
+// For drawing sprite sheets
 void TextureManager::drawFrame(const std::string& id,
                                int x, int y, int width, int height,
                                int currentRow, int currentFrame,
-                               SDL_Renderer *pRenderer, SDL_RendererFlip flip) {
+                               SDL_Renderer *pRenderer,
+                               SDL_RendererFlip flip) {
     SDL_Rect srcRect;
     SDL_Rect destRect;
     srcRect.x = width * currentFrame;
@@ -63,7 +64,3 @@ void TextureManager::drawFrame(const std::string& id,
 
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
-
-
-
-
