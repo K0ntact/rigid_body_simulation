@@ -78,10 +78,10 @@ void Game::render() {
     SDL_RenderPresent(m_pRenderer);
 }
 
-void Game::update() {
+void Game::update(float time) {
     std::vector<GameObject*>::iterator go_iter;
     for(go_iter = go_arr.begin(); go_iter != go_arr.end(); ++go_iter) {
-        (*go_iter)->update();
+        (*go_iter)->update(time);
     }
 }
 

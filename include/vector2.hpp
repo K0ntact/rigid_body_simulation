@@ -9,7 +9,9 @@ public:
     float x,y;
 
     Vector2(float x, float y);
+    Vector2(int x, int y);
     Vector2();
+
     float magnitude() const;
     float squaredMagnitude() const;
     void normalize();

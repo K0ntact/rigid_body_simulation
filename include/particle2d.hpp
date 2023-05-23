@@ -4,7 +4,7 @@
 #include "vector2.hpp"
 
 class Particle2D {
-private:
+protected:
     Vector2 position;
     Vector2 velocity;
     Vector2 acceleration;
@@ -20,7 +20,7 @@ public:
     void setVelocity(float x, float y);
     void setAcceleration(float x, float y);
     void setDamping(float damp);
-    void update(float time);
+    virtual void update(float time);
 };
 
 #endif //PARTICLE2D_HPP
