@@ -9,10 +9,10 @@ TextureManager::~TextureManager() = default;
 
 TextureManager* TextureManager::s_pInstance = nullptr;
 
-bool TextureManager::load(const std::string& fileName,
-                          const std::string& id,
+bool TextureManager::load(const std::string filePath,
+                          const std::string id,
                           SDL_Renderer *pRenderer) {
-    SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
+    SDL_Surface* pTempSurface = IMG_Load(filePath.c_str());
     if(pTempSurface == 0) {
         std::cout << "IMG_Load Error: " << SDL_GetError() << std::endl;
         return false;
@@ -29,8 +29,7 @@ bool TextureManager::load(const std::string& fileName,
     return true;
 }
 
-// For drawing single image
-void TextureManager::draw(const std::string& id,
+void TextureManager::draw(const std::string id,
                           int x, int y, int width, int height,
                           SDL_Renderer *pRenderer,
                           SDL_RendererFlip flip) {
@@ -39,6 +38,9 @@ void TextureManager::draw(const std::string& id,
 
     srcRect.x = 0;
     srcRect.y = 0;
+
+    // If destRect width and height are bigger than srcRect, the image will be stretched larger.
+    // If it is smaller, then the image will be shrunk.
     srcRect.w = destRect.w = width;
     srcRect.h = destRect.h = height;
     destRect.x = x;
@@ -48,7 +50,7 @@ void TextureManager::draw(const std::string& id,
 }
 
 // For drawing sprite sheets
-void TextureManager::drawFrame(const std::string& id,
+void TextureManager::drawFrame(const std::string id,
                                int x, int y, int width, int height,
                                int currentRow, int currentFrame,
                                SDL_Renderer *pRenderer,
@@ -57,6 +59,9 @@ void TextureManager::drawFrame(const std::string& id,
     SDL_Rect destRect;
     srcRect.x = width * currentFrame;
     srcRect.y = height * currentRow;
+
+    // If destRect width and height are bigger than srcRect, the image will be stretched larger.
+    // If it is smaller, then the image will be shrunk.
     srcRect.w = destRect.w = width;
     srcRect.h = destRect.h = height;
     destRect.x = x;

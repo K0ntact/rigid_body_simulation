@@ -22,7 +22,7 @@ Game::~Game() {
 
 Game* Game::s_pInstance = nullptr;
 
-bool Game::init(const char *title, int xpos, int ypos, int width, int height, int fullscreen) {
+bool Game::init(const char* title, int xpos, int ypos, int width, int height, int screenOpt) {
     // SDL init
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         const char* error = SDL_GetError();
@@ -31,8 +31,8 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
     }
 
     int flags = 0;
-    if(fullscreen) {
-        flags = SDL_WINDOW_SHOWN;
+    if(screenOpt) {
+        flags = SDL_WINDOW_RESIZABLE;
     }
 
     // Window init
@@ -51,7 +51,7 @@ bool Game::init(const char *title, int xpos, int ypos, int width, int height, in
         return false;
     }
 
-    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
     m_bRunning = true;
 
     bool load_result = TextureManager::Instance()->load("..\\assets\\platform\\arc2.png", "animate", m_pRenderer);

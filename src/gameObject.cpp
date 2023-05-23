@@ -5,10 +5,6 @@
 
 void GameObject::load(int x, int y, int width, int height, std::string textureID) {
     position = {x, y};
-    velocity = {10, 3};
-    acceleration = {0, 20};
-    damping = 0.99f;
-    inverseMass = 0;
     m_width = width;
     m_height = height;
     m_textureID = textureID;

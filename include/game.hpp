@@ -27,7 +27,6 @@ public:
     }
     ~Game();
 
-    bool init(const char* title, int xpos, int ypos, int width, int height, int fullscreen);
     /**
      * Initialize the game
      *
@@ -40,6 +39,7 @@ public:
      *
      * @return true if initialization is successful, false otherwise
      */
+    bool init(const char* title, int xpos, int ypos, int width, int height, int screenOpt);
 
     /**
      * Render all game objects
