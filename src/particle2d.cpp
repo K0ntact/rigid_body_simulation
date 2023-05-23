@@ -14,7 +14,7 @@ Particle2D::Particle2D(Vector2 pos, Vector2 vel, Vector2 acc, float damp, float 
     this->velocity = vel;
     this->acceleration = acc;
     this->damping = damp;
-    this->forceAccum = {0};
+    this->forceAccum = {0, 0};
     this->inverseMass = invMass;
 }
 
