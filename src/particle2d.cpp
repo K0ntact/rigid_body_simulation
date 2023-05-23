@@ -5,7 +5,7 @@ Particle2D::Particle2D() {
     this->velocity = {0, 0};
     this->acceleration = {0, 0};
     this->damping = {0};
-    this->forceAccum = {0};
+    this->forceAccum = {0, 0};
     this->inverseMass = {0};
 }
 
@@ -51,6 +51,10 @@ void Particle2D::update(float time) {
     // damping = damping^t (so that reduction of velocity is proportional to time)
     this->velocity *= powf(damping, time);
     this->velocity.addScaledVector(this->acceleration, time);
+}
+
+void Particle2D::clearAccum() {
+    forceAccum = {0, 0};
 }
 
 
