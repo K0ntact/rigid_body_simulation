@@ -23,8 +23,26 @@ protected:
     int m_height;
 
 public:
+    /**
+     * Construct a new Game Object from a texture ID
+     * @param x x position on the screen
+     * @param y y position on the screen
+     * @param width width of the object
+     * @param height height of the object
+     * @param textureID the ID of the texture
+     */
     virtual void load(int x, int y, int width, int height, std::string textureID);
+
+    /**
+     * Draw the object on the screen
+     * @param pRenderer the renderer to draw the object
+     */
     virtual void draw(SDL_Renderer* pRenderer);
+
+    /**
+     * Update the object
+     * @param time time elapsed since last update
+     */
     virtual void update(float time);
     virtual void clean();
 };
