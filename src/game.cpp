@@ -3,6 +3,8 @@
 #include "game.hpp"
 #include "gameObject.hpp"
 
+const Vector2 GRAVITY = {0, 20};
+
 Game::Game() {
     m_bRunning = false;
     m_pWindow = nullptr;
@@ -81,7 +83,9 @@ void Game::render() {
 void Game::update(float time) {
     std::vector<GameObject*>::iterator go_iter;
     for(go_iter = go_arr.begin(); go_iter != go_arr.end(); ++go_iter) {
+        (*go_iter)->addForce(GRAVITY);
         (*go_iter)->update(time);
+        (*go_iter)->clearAccum();   // clear all external forces before next update
     }
 }
 

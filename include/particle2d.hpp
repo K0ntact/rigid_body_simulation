@@ -5,6 +5,8 @@
 
 class Particle2D {
 protected:
+    // Internal forces of the particle.
+    // External forces (gravity) are applied by the force generators.
     Vector2 position;
     Vector2 velocity;
     Vector2 acceleration;
@@ -21,6 +23,7 @@ public:
     void setAcceleration(float x, float y);
     void setDamping(float damp);
     virtual void update(float time);
+    void addForce(Vector2 force);
     void clearAccum();
 };
 
