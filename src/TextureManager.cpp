@@ -32,17 +32,21 @@ bool TextureManager::load(const std::string filePath,
 void TextureManager::draw(const std::string id,
                           int x, int y, int width, int height,
                           SDL_Renderer *pRenderer,
+                          int offset_x, int offset_y,
+                          int zoom,
                           SDL_RendererFlip flip) {
     SDL_Rect srcRect;   // the texture
     SDL_Rect destRect;  // the screen
 
-    srcRect.x = 0;
-    srcRect.y = 0;
+    srcRect.x = offset_x;
+    srcRect.y = offset_y;
 
     // If destRect width and height are bigger than srcRect, the image will be stretched larger.
     // If it is smaller, then the image will be shrunk.
-    srcRect.w = destRect.w = width;
-    srcRect.h = destRect.h = height;
+    srcRect.w = width - 1;
+    destRect.w = width * zoom;
+    srcRect.h = height;
+    destRect.h = height * zoom;
     destRect.x = x;
     destRect.y = y;
 
@@ -54,16 +58,20 @@ void TextureManager::drawFrame(const std::string id,
                                int x, int y, int width, int height,
                                int currentRow, int currentFrame,
                                SDL_Renderer *pRenderer,
+                               int offset_x, int offset_y,
+                               int zoom,
                                SDL_RendererFlip flip) {
     SDL_Rect srcRect;
     SDL_Rect destRect;
-    srcRect.x = width * currentFrame;
-    srcRect.y = height * currentRow;
+    srcRect.x = (offset_x * int(SDL_GetTicks() / 100 % 8) + width * currentFrame);
+    srcRect.y = offset_y + height * currentRow;
 
     // If destRect width and height are bigger than srcRect, the image will be stretched larger.
     // If it is smaller, then the image will be shrunk.
-    srcRect.w = destRect.w = width;
-    srcRect.h = destRect.h = height;
+    srcRect.w = width - 1;
+    destRect.w = width * zoom;
+    srcRect.h = height;
+    destRect.h = height * zoom;
     destRect.x = x;
     destRect.y = y;
 

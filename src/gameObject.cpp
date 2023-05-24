@@ -13,7 +13,15 @@ void GameObject::load(int x, int y, int width, int height, std::string textureID
 void GameObject::draw(SDL_Renderer* pRenderer) {
     int m_x = (int)position.x;
     int m_y = (int)position.y;
-    TextureManager::Instance()->draw(m_textureID, m_x, m_y, m_width, m_height, pRenderer);
+//    TextureManager::Instance()->draw(m_textureID,
+//                                     m_x, m_y, m_width, m_height,
+//                                     pRenderer,
+//                                     33*15, 33);
+    TextureManager::Instance()->drawFrame(m_textureID,
+                                          m_x, m_y, m_width, m_height,
+                                          0, 15,
+                                          pRenderer,
+                                          33, 33);
 }
 
 // TODO: Implement energy loss on collision

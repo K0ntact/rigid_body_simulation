@@ -56,14 +56,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
     m_bRunning = true;
 
-    bool load_result = TextureManager::Instance()->load("..\\assets\\platform\\arc2.png", "animate", m_pRenderer);
-    if(!load_result) {
-        std::cout << "TextureManager Instance error" << std::endl;
-        return false;
-    }
+    TextureManager::Instance()->load("..\\assets\\maze\\tankbrigade.png", "tank", m_pRenderer);
 
     GameObject* gobj1 = new GameObject();
-    gobj1->load(0, 0, 34, 42, "animate");
+    gobj1->load(10, 10, 33, 32, "tank");
+    gobj1->setDamping(0.97);
+    gobj1->setMass(10);
     go_arr.push_back(gobj1);
 
     return true;

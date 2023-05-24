@@ -48,11 +48,16 @@ public:
      * @param width the width of the image
      * @param height the height of the image
      * @param pRenderer the renderer to draw the texture
+     * @param offset_x x offset on the texture. Default 0
+     * @param offset_y y offset on the texture. Default 0
+     * @param zoom zoom the image on the screen. Default 1
      * @param flip flip the image. Default SDL_FLIP_NONE
      */
     void draw(std::string id,
               int x, int y, int width, int height,
               SDL_Renderer* pRenderer,
+              int offset_x = 0, int offset_y = 0,
+              int zoom = 1,
               SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     /**
@@ -65,13 +70,17 @@ public:
      * @param height height of the image
      * @param currentRow row position of the image on the sprite sheet. Starts from 0
      * @param currentFrame frame position on the row. Starts from 0
-     * @param pRenderer the renderer to draw the texture
+     * @param offset_x x offset on the texture. Default 0
+     * @param offset_y y offset on the texture. Default 0
+     * @param zoom zoom the image on the screen. Default 1
      * @param flip flip the image. Default SDL_FLIP_NONE
      */
     void drawFrame(std::string id,
                    int x, int y, int width, int height,
                    int currentRow, int currentFrame,
                    SDL_Renderer* pRenderer,
+                   int offset_x = 0, int offset_y = 0,
+                   int zoom = 1,
                    SDL_RendererFlip flip = SDL_FLIP_NONE);
 };
 
