@@ -21,6 +21,8 @@ void GameObject::update(float time) {
     assert(time > 0.0);
 
     time /= 500;
+
+    Vector2 acceleration = this->forceAccum * this->inverseMass;
     position.addScaledVector(velocity, time);
     position.addScaledVector(acceleration, 0.5f * time * time);
 
