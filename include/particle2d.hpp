@@ -23,6 +23,11 @@ public:
     virtual void update(float time);
     void addForce(Vector2 force);
     void clearAccum();
+
+    float getInverseMass() const;
+    float getMass() const;
+    Vector2 getPosition() const;
+    Vector2 getVelocity() const;
 };
 
 #endif //PARTICLE2D_HPP

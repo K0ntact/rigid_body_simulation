@@ -59,4 +59,7 @@ void Particle2D::clearAccum() {
     forceAccum = {0, 0};
 }
 
-
+float Particle2D::getInverseMass() const {return inverseMass;}
+float Particle2D::getMass() const {return 1/inverseMass;}
+Vector2 Particle2D::getPosition() const {return position;}
+Vector2 Particle2D::getVelocity() const {return velocity;}
