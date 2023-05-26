@@ -6,6 +6,7 @@
 
 #include "TextureManager.hpp"
 #include "gameObject.hpp"
+#include "vector2.hpp"
 
 class Game {
 private:
@@ -17,6 +18,7 @@ private:
     SDL_Renderer* m_pRenderer;
     std::vector<GameObject*> go_arr;
 
+    Vector2 gravity;
 public:
     static Game* Instance() {
         if(s_pInstance == nullptr) {

@@ -3,12 +3,11 @@
 #include "game.hpp"
 #include "gameObject.hpp"
 
-const Vector2 GRAVITY = {0, 20};
-
 Game::Game() {
     m_bRunning = false;
     m_pWindow = nullptr;
     m_pRenderer = nullptr;
+    gravity = {0, 20};
 }
 
 Game::~Game() {
@@ -46,7 +45,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
     }
 
     // Renderer init
-    m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
+    m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_PRESENTVSYNC);
     if(m_pRenderer == nullptr) {
         const char* error = SDL_GetError();
         std::cout<< "Renderer Init fail: " << error << "\n";
@@ -60,6 +59,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 
     GameObject* gobj1 = new GameObject();
     gobj1->load(10, 10, 33, 32, "tank");
+    gobj1->setVelocity(20, 30);
     gobj1->setDamping(0.97);
     gobj1->setMass(10);
     go_arr.push_back(gobj1);
@@ -81,7 +81,7 @@ void Game::render() {
 void Game::update(float time) {
     std::vector<GameObject*>::iterator go_iter;
     for(go_iter = go_arr.begin(); go_iter != go_arr.end(); ++go_iter) {
-        (*go_iter)->addForce(GRAVITY);
+        (*go_iter)->addForce(gravity * (*go_iter)->getMass());
         (*go_iter)->update(time);
         (*go_iter)->clearAccum();   // clear all external forces before next update
     }
