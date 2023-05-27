@@ -23,5 +23,5 @@ add_executable(rigid_body_simulation main.cpp
                 include/TextureManager.hpp
                 src/TextureManager.cpp
                 src/gameObject.cpp
-                include/gameObject.hpp)
+                include/gameObject.hpp include/particleForceGenerator.hpp src/particleForceRegister.cpp include/particleForceRegister.hpp)
 target_link_libraries(rigid_body_simulation ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES})
