@@ -8,13 +8,8 @@
 #include "particle2d.hpp"
 
 class GameObject : public Particle2D {
-private:
-    bool out_of_bounds_x = false;
-    bool out_of_bounds_y = false;
-
 protected:
     std::string m_textureID;
-
 //    currently not needed
 //    int m_currentFrame;
 //    int m_currentRow;
@@ -24,7 +19,8 @@ protected:
 
 public:
     /**
-     * Construct a new Game Object from a texture ID
+     * Construct a new Game Object from a texture ID.
+     * (x, y) is the position of the object's top left corner.
      * @param x x position on the screen
      * @param y y position on the screen
      * @param width width of the object
@@ -43,7 +39,7 @@ public:
      * Update the object
      * @param time time elapsed since last update
      */
-    virtual void update(float time);
+    virtual void update(float time) override;
     virtual void clean();
 };
 
